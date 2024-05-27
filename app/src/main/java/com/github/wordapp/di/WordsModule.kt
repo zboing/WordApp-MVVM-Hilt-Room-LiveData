@@ -1,8 +1,8 @@
 package com.github.wordapp.di
 
+import com.github.wordapp.database.WordsDao
 import com.github.wordapp.repository.WordsRepository
 import com.github.wordapp.repository.WordsRepositoryImpl
-import com.github.wordapp.database.WordsDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

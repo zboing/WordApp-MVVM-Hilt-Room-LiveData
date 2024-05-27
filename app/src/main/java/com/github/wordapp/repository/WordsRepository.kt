@@ -6,5 +6,7 @@ import com.github.wordapp.model.Word
 interface WordsRepository {
     fun insertWord(word: Word)
 
+    fun deleteWord(word: Word)
+
     fun getAllWords() : LiveData<List<Word>>
 }

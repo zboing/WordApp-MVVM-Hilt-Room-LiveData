@@ -2,8 +2,8 @@ package com.github.wordapp.ui
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.afollestad.materialdialogs.MaterialDialog
@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val wordsAdapter = WordsAdapter()
+        val wordsAdapter = WordsAdapter(viewModel = viewModel)
 
         binding.rv.apply {
             adapter = wordsAdapter

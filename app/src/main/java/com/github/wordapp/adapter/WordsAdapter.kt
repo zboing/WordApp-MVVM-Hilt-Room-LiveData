@@ -8,8 +8,12 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.github.wordapp.databinding.ItemWordBinding
 import com.github.wordapp.model.Word
+import com.github.wordapp.viewmodel.WordsViewModel
+import javax.inject.Inject
 
-class WordsAdapter(private val interaction: Interaction? = null) :
+interface Interaction
+
+class WordsAdapter @Inject constructor(private val viewModel: WordsViewModel, private val interaction: Interaction? = null) :
     ListAdapter<Word, WordsAdapter.WordViewHolder>(ComparatorDiffUtil()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WordViewHolder {
@@ -26,11 +30,13 @@ class WordsAdapter(private val interaction: Interaction? = null) :
 
         fun bind(item: Word) {
             binding.word = item
-        }
 
+            binding.delete.setOnClickListener{
+                viewModel.deleteWord(item)
+            }
+        }
     }
 
-    interface Interaction
 
     class ComparatorDiffUtil : DiffUtil.ItemCallback<Word>() {
         override fun areItemsTheSame(oldItem: Word, newItem: Word): Boolean {

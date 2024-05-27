@@ -14,6 +14,12 @@ class WordsRepositoryImpl (private val wordsDao : WordsDao): WordsRepository {
         }
     }
 
+    override fun deleteWord(word: Word) {
+        CoroutineScope(IO).launch {
+            wordsDao.deleteWord(word)
+        }
+    }
+
     override fun getAllWords(): LiveData<List<Word>> {
         return wordsDao.getAllWords()
     }
